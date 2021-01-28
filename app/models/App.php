@@ -7,7 +7,7 @@ class App {
 	public static function bind($keyVal, $val) {
 
 		static::$register[$keyVal] = $val;
-	
+
 	}
 
 
@@ -16,8 +16,8 @@ class App {
 		if (!array_key_exists($keyVal, static::$register)) {
 			throw new Exception($keyVal . "not bound to the container.");
 		}
-			
+
 		return static::$register[$keyVal];
-		
+
 	}
 }

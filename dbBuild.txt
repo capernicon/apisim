@@ -3,4 +3,4 @@ Database setup
 Database:
   apisim
 
-  ** db builder here **
+  ** db builder script here **

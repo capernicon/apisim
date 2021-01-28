@@ -1,9 +1,5 @@
 <?php
 /**
- * Config files
- */
-
-/**
  * Configuration for error reporting
  * ***ONLY TO USE DURING DEVELOPMENT***
  */

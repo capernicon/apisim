@@ -17,5 +17,6 @@
 	#api_output_container {
 		min-height: 400px;
 		height: auto;
+		padding: 1rem;
 	}
 }

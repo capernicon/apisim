@@ -3,7 +3,7 @@
 class Connection {
 
 	public static function create($databaseConfig) {
-		
+
 		try {
 			return new PDO(
 				$databaseConfig['connection'] . ';dbname=' . $databaseConfig['name'],
@@ -15,6 +15,6 @@ class Connection {
 		catch (PDOEXCEPTION $exception) {
 			die($exception->getMessage());
 		}
-		
+
 	}
 }
