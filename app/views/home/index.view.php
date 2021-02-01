@@ -1,7 +1,4 @@
-  <?php
-   include __DIR__ . '/../../controllers/RequestController.php';
-   include 'nav.view.php';
-  ?>
+  <?php include 'nav.view.php'; ?>
 
   <main>
       <div class="container">
@@ -22,28 +19,28 @@
             <div class="section"></div>
             <div id="form_container" class="z-depth-1 grey lighten-4 row">
 
-              <form class="col s12" method="post" action="">
+              <form class="col s12" method="POST" action="/car">
                 <div class="row">
                   <div class="input-field col s12">
-                    <input value="Audi" id="vehicle_make" name="vehicle_make" type="text">
+                    <input value="Audi" id="vehicle_make" name="make" type="text">
                     <label class="active" for="vehicle_make">Vehicle make</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input value="SUV" id="vehicle_type" name="vehicle_type" type="text">
+                    <input value="SUV" id="vehicle_type" name="type" type="text">
                     <label class="active" for="vehicle_type">Vehicle type</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input value="Black" id="vehicle_colour" name="vehicle_colour" type="text">
+                    <input value="Black" id="vehicle_colour" name="colour" type="text">
                     <label class="active" for="vehicle_colour">Vehicle colour</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input value="2017" id="vehicle_manufacture_year" name="vehicle_manufacture_year" type="text">
+                    <input value="2017" id="vehicle_manufacture_year" name="year" type="text">
                     <label for="vehicle_manufacture_year">Vehicle manufacture year</label>
                   </div>
                 </div>
@@ -51,7 +48,7 @@
 
                 <div id="initial_option" class="row valign-wrapper">
                   <div id="options_container" class="input-field col s8">
-                    <input id="random_option_item" value=" " name="vehicle_option[]" type="text">
+                    <input id="random_option_item" value=" " name="options[]" type="text">
                     <label for="vehicle_option">Vehicle option(s)</label>
                   </div>
                   <div id="add_button" class="input-field col s4">
@@ -61,7 +58,7 @@
                   </div>
                 </div>
 
-                <button type="submit" name="btn_login" class="col s12 btn btn-large waves-effect waves-light indigo lighten-3">Submit</button>
+                <button type="submit" class="col s12 btn btn-large waves-effect waves-light indigo lighten-3">Submit</button>
 
                 <div class="section"></div>
                 <div class="section"></div>
@@ -74,10 +71,13 @@
 
           <!-- endpoint -->
           <div class="col s7 offset-s1">
-            <div class="row valign-wrapper ">
+            <div class="section"></div>
+
+            <!--
+            <div class="row valign-wrapper">
               <div class="input-field  col s4">
                 <h6>
-                  APISim.online/api/?
+                  APISim.online/car?
                 </h6>
               </div>
               <div class="input-field valign-wrapper col s6">
@@ -89,10 +89,19 @@
               </button>
 
             </div>
+            -->
 
             <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
 
+              <!--
+                api GET results here
+              -->
 
+              <!--
+              foreach ($car as cars) {
+
+              }
+              -->
 
             </div>
           </div> <!-- col endpoint -->

@@ -8,7 +8,8 @@ Still a work in progress.
 1. [app](app): Application backend
     - [config](app/config): configuration files (database config)
     - [controllers](app/controllers): application controllers
-    - [models](app/core): core files to application
+    - [database](app/database): database config
+    - [core](app/core): core files to application
     - [models](app/models): application models
     - [views](app/views): application views
 

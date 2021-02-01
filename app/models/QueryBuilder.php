@@ -14,6 +14,7 @@ class QueryBuilder {
 
 	}
 
+
 	/*
 	* @params $databaseTable
 	* @params $paramaters
@@ -24,20 +25,25 @@ class QueryBuilder {
 
 	}
 
+
 	/*
 	*  @params $databaseTable
 	*  @params $paramaters
 	*/
 	public function insert($databaseTable, $paramaters) {
 
-		$sql = sprintf('insert into %s (%s) values %s', $databaseTable, implode(', ', array_keys($paramaters)), ':' . implode(', :', array_keys($paramaters)));
+		$sql = sprintf('insert into %s (%s) values (%s)', $databaseTable, implode(',', array_keys($paramaters)), ':' . implode(', :', array_keys($paramaters)));
 
 		try {
 
+			$items = Helper::filter($paramaters);
+
 			$statement = $this->pdo->prepare($sql);
-			$statement->execute($paramaters);
+
+			$statement->execute($items);
 
 		}
+
 		catch(Exception $exception) {
 
 			die($exception->getMessage());

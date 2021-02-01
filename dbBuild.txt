@@ -1,6 +1,0 @@
-Database setup
-
-Database:
-  apisim
-
-  ** db builder script here **
