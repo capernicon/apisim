@@ -3,7 +3,6 @@
 //namespsaces will replace this need for requires shortly
 require_once '../app/models/DIContainer.php';
 require_once '../app/models/QueryBuilder.php';
-require_once '../app/models/helpers/helpers.php';
 require_once '../app/database/DatabaseConnection.php';
 require_once '../app/core/Helper.php';
 

@@ -31,4 +31,21 @@ class Helper {
     	return require __DIR__ . "/../views/home/{$page}.view.php";
 
 	}
+
+
+	public static function httpResponse($code, $data = []) {
+
+		http_response_code($code);
+
+		return $data;
+
+	}
+
+
+	public static function encode($response) {
+
+		return json_encode($response, JSON_PRETTY_PRINT);
+
+	}
+
 }

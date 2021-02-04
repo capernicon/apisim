@@ -73,7 +73,6 @@
           <div class="col s7 offset-s1">
             <div class="section"></div>
 
-            <!--
             <div class="row valign-wrapper">
               <div class="input-field  col s4">
                 <h6>
@@ -89,19 +88,10 @@
               </button>
 
             </div>
-            -->
 
             <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
-
-              <!--
-                api GET results here
-              -->
-
-              <!--
-              foreach ($car as cars) {
-
-              }
-              -->
+              <!-- api GET results here -->
+              <pre><?= $response ?></pre>
 
             </div>
           </div> <!-- col endpoint -->

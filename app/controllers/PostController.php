@@ -4,9 +4,9 @@ class PostController {
 
 	public function store() {
 
-		DIContainer::get('database')->insert('car', $_POST);
+		$response = DIContainer::get('database')->insert('car', $_POST);
+		Helper::view('index', ['response' => Helper::encode($response)]);
 
-		Helper::view(index);
 	}
 
 }

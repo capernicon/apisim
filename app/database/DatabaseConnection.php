@@ -13,7 +13,7 @@ class Connection {
 		}
 
 		catch (PDOEXCEPTION $exception) {
-			die($exception->getMessage());
+			die("An error occured with the database connection.");
 		}
 
 	}

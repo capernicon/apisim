@@ -15,28 +15,40 @@ class QueryBuilder {
 	}
 
 
+	public function selectAll($databaseTable) {
+
+	    $statement = $this->pdo->prepare("select * from {$databaseTable}");
+
+		//execute to fetch sql
+		$statement->execute();
+
+		return $statement->fetchAll(PDO::FETCH_CLASS);
+
+	}
+
+
 	/*
 	* @params $databaseTable
 	* @params $paramaters
 	*/
 	public function search($databaseTable, $paramaters) {
 
-		//our logic will go here which searches database against $_GET result
+		//implement query search logic
 
 	}
 
 
 	/*
 	*  @params $databaseTable
-	*  @params $paramaters
+	*  @params $parameters
 	*/
-	public function insert($databaseTable, $paramaters) {
+	public function insert($databaseTable, $parameters) {
 
-		$sql = sprintf('insert into %s (%s) values (%s)', $databaseTable, implode(',', array_keys($paramaters)), ':' . implode(', :', array_keys($paramaters)));
+		$sql = sprintf('insert into %s (%s) values (%s)', $databaseTable, implode(',', array_keys($parameters)), ':' . implode(', :', array_keys($parameters)));
+
+		$items = Helper::filter($parameters);
 
 		try {
-
-			$items = Helper::filter($paramaters);
 
 			$statement = $this->pdo->prepare($sql);
 
@@ -46,9 +58,16 @@ class QueryBuilder {
 
 		catch(Exception $exception) {
 
-			die($exception->getMessage());
+			die("An error occured trying to perform this action.");
 
 		}
+
+		return Helper::httpResponse(
+			201,
+			['status' => 'created',
+			'data' => $parameters]
+		);
+
 	}
 
 }
