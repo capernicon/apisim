@@ -32,7 +32,7 @@ function switchText() {
     let randomWords =
       [
         "Rust Protection",
-        "Paint Glossifer",
+        "Paint Glossifier",
         "30 inch GPS screen",
         "Rear door ashtrays",
         "Additonal cupholders",

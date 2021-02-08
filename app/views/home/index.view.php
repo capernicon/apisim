@@ -7,7 +7,9 @@
         <div class="section"></div>
           <div class="row">
             <div class="flow-text col s8">
-              APISim is an application that allows users to populate and view populated data sets from a RESTful API design.<br><br>A user can choose to enter data into the provided field and make a query to that data or simply query the endpoint and see what is returned.
+              APISim is an application that allows users to enter and retrieve saved data.
+              <div class="section"></div>
+              Either submit the prefilled data or choose to enter new data then make a query to that data, or simply query the endpoint and see what values are returned.
             </div>
           </div>
         <div class="section"></div>
@@ -105,6 +107,9 @@
         </div>
 
       </div> <!-- container -->
+      <div class="section"></div>
+      <div class="section"></div>
+      <div class="section"></div>
     </main>
 
     <script src="js/materialize.js"></script>

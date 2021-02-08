@@ -44,6 +44,9 @@ class Helper {
 
 	public static function query($parameters) {
 
+		define("QUERY", 0);
+		define("VALUE", 1);
+
 		parse_str($parameters, $queries);
 
 		foreach($queries as $string) {
@@ -54,7 +57,7 @@ class Helper {
 
 		foreach($substring as $string) {
    	 		$strip = explode("=", $string);
-    		$values[$strip[0]] = $strip[1];
+    		$values[$strip[QUERY]] = $strip[VALUE];
 		}
 
 		return $values;

@@ -17,7 +17,7 @@ class QueryBuilder {
 
 	/*
 	* @params $databaseTable
-	* @params $paramaters
+	* @params $parameters
 	*/
 	public function search($databaseTable, $parameters) {
 
@@ -42,25 +42,24 @@ class QueryBuilder {
 			}
 		}
 
-		$params = [];
-
-		foreach ($parameters as $value) {
-
-			$params[$value] = $value;
-
-		}
-
 		try {
 
 			$statement = $this->pdo->prepare($sql);
 
-			$statement->execute($params);
+			//bind the passing in search
+			foreach ($parameters as $value) {
+
+				$statement->bindParam(':' . $value, $value);
+
+			}
+
+			$statement->execute();
 
 			$query = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 		}
 
-		catch(Exception $exception) {
+		catch (Exception $exception) {
 
 			die("An error occured trying to perform this action.");
 
@@ -72,6 +71,7 @@ class QueryBuilder {
 		return Helper::httpResponse(
 			200,
 			['status' => 'ok',
+			 'count' => count($response),
 			'data' => $response]
 		);
 
