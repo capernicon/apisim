@@ -23,33 +23,33 @@
                 <div class="row">
                   <div class="input-field col s12">
                     <input value="Audi" id="vehicle_make" name="make" type="text">
-                    <label class="active" for="vehicle_make">Vehicle make</label>
+                    <label for="make">Make</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input value="SUV" id="vehicle_type" name="type" type="text">
-                    <label class="active" for="vehicle_type">Vehicle type</label>
+                    <label for="vehicle_type">Type</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input value="Black" id="vehicle_colour" name="colour" type="text">
-                    <label class="active" for="vehicle_colour">Vehicle colour</label>
+                    <label for="vehicle_colour">Colour</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input value="2017" id="vehicle_manufacture_year" name="year" type="text">
-                    <label for="vehicle_manufacture_year">Vehicle manufacture year</label>
+                    <label for="vehicle_manufacture_year">Year</label>
                   </div>
                 </div>
 
 
                 <div id="initial_option" class="row valign-wrapper">
                   <div id="options_container" class="input-field col s8">
-                    <input id="random_option_item" value=" " name="options[]" type="text">
-                    <label for="vehicle_option">Vehicle option(s)</label>
+                    <input value=" " id="random_option_item" name="options[]" type="text">
+                    <label for="random_option_item">Option(s)</label>
                   </div>
                   <div id="add_button" class="input-field col s4">
                     <a id="add" class="waves-effect waves-light indigo btn">
@@ -58,7 +58,9 @@
                   </div>
                 </div>
 
-                <button type="submit" class="col s12 btn btn-large waves-effect waves-light indigo lighten-3">Submit</button>
+                <button type="submit" class="col s12 btn btn-large waves-effect waves-light indigo lighten-3">
+                  Submit
+                </button>
 
                 <div class="section"></div>
                 <div class="section"></div>
@@ -73,27 +75,31 @@
           <div class="col s7 offset-s1">
             <div class="section"></div>
 
-            <div class="row valign-wrapper">
-              <div class="input-field  col s4">
-                <h6>
-                  APISim.online/car?
-                </h6>
-              </div>
-              <div class="input-field valign-wrapper col s6">
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">URL request</label>
-              </div>
-              <button class="btn waves-effect waves-light indigo lighten-3 offset-s2 col s3" type="submit" name="action">
-                Send
-              </button>
+            <form class="col s12" method="GET" action="/car">
+              <div class="row">
+                <div class="input-field col s3">
+                  <h6>
+                    <?= Helper::$url ?>
+                  </h6>
+                </div>
+                <div class="input-field valign-wrapper col s4">
+                  <input value="make=Audi" id="random_option_item" name="search" type="text">
+                  <label for="random_option_item">URL request</label>
+                </div>
+                <div class="input-field valign-wrapper offset-s1 col s4">
+                  <button class="btn waves-effect waves-light indigo lighten-3" type="submit">
+                    Send
+                  </button>
+                </div>
 
-            </div>
+              </div>
+            </form>
 
-            <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
+              <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
+
               <!-- api GET results here -->
-              <pre><?= $response ?></pre>
+              <pre><?= htmlspecialchars(stripcslashes($response)); ?></pre>
 
-            </div>
           </div> <!-- col endpoint -->
 
         </div>

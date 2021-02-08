@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
     //hide buttons for each additional option created
     let c = clone.querySelector("#add_button");
     c.style.visibility = "hidden";
-    
+
     insertAfter(clone, initial_option);
     switchText();
   });
@@ -29,10 +29,10 @@ function insertAfter(newNode, referenceNode) {
 }
 
 function switchText() {
-    let randomWords = 
+    let randomWords =
       [
-        "Rust Protection", 
-        "Paint Glossifer", 
+        "Rust Protection",
+        "Paint Glossifer",
         "30 inch GPS screen",
         "Rear door ashtrays",
         "Additonal cupholders",
@@ -41,7 +41,7 @@ function switchText() {
         "VGA reverse camera"
       ];
 
-    let randomIndex = Math.floor(Math.random() * 8);//creates random No. from 1 - 3
+    let randomIndex = Math.floor(Math.random() * 8);
 
     document.getElementById("random_option_item").value = randomWords[randomIndex];
 }

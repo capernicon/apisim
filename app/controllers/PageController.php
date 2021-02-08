@@ -4,7 +4,7 @@ class PageController {
 
 	public function index() {
 
-		Helper::view('index');
+		Helper::view('index', ['url' => $url]);
 
 	}
 

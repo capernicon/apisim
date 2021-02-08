@@ -2,24 +2,62 @@
 
 class Helper {
 
+	public static $url = "APISim.online/car/";
+
+
 	/*
-	*	@params $paramaters
-	*	//helper function to filter $_POST values
+	*	@params $parameters
+	*	//serialize options array
 	*/
-	public static function filter($paramaters) {
+	public static function serialize($input) {
 
-		$items = [];
-
-		foreach ($paramaters as $post => $value) {
+		foreach ($input as $post => $value) {
 			if (is_array($value)) {
-				$items[$post] = json_encode($value);
-			}
-			else {
-				$items[$post] = $value;
+				$input[$post] = serialize($value);
 			}
 		}
 
-		return $items;
+		return $input;
+
+	}
+
+
+	public static function unserialize($response) {
+
+		for ($iterator = 0; $iterator < count($response); $iterator++) {
+
+			$response[$iterator]['options'] = unserialize($response[$iterator]['options']);
+
+		}
+
+		return $response;
+
+	}
+
+
+	public static function sanitize($response) {
+
+		return json_encode($response, JSON_PRETTY_PRINT);
+
+	}
+
+
+	public static function query($parameters) {
+
+		parse_str($parameters, $queries);
+
+		foreach($queries as $string) {
+			$substring = explode("&", $string);
+		}
+
+		$values = [];
+
+		foreach($substring as $string) {
+   	 		$strip = explode("=", $string);
+    		$values[$strip[0]] = $strip[1];
+		}
+
+		return $values;
 
 	}
 
@@ -38,13 +76,6 @@ class Helper {
 		http_response_code($code);
 
 		return $data;
-
-	}
-
-
-	public static function encode($response) {
-
-		return json_encode($response, JSON_PRETTY_PRINT);
 
 	}
 
