@@ -2,12 +2,13 @@
 
 class PageController {
 
+	public static $url = "APISim.online/car/";
+
 	public function index() {
 
-		$prefilled['status'] = "sample";
-		$prefilled['data'] = $array = ["make" => "Ford", "type" => "Hatch", "colour" => "Red", "year" => "1990"];
+		$example = DIContainer::retrieve('database')->select('example');
 
-		Helper::view('index', ['response' => Helper::sanitize($prefilled)]);
+		Helper::view('index', ['exampleResponse' => Helper::jsonOutput($example)]);
 
 	}
 

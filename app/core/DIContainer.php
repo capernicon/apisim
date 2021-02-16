@@ -6,6 +6,7 @@ class DIContainer {
 
 	protected static $keys = [];
 
+
 	public static function bind($key, $val) {
 
 		static::$keys[$key] = $val;
@@ -13,10 +14,12 @@ class DIContainer {
 	}
 
 
-	public static function get($key) {
+	public static function retrieve($key) {
 
 		if (!array_key_exists($key, static::$keys)) {
-			throw new Exception($key . "is not bound to the container.");
+
+			throw GeneralHandler::DIContainerRetrieveKeyFailure($key);
+
 		}
 
 		return static::$keys[$key];

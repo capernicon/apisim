@@ -1,10 +1,11 @@
 <?php
 
-//The router should handle ($_GET, $_POST) requests from the user THEN proceed to controller to be actioned.
-
 class Router {
-	//post = form to db, get = retreive from db
-	public $routes = ['POST' => [], 'GET' => []];
+
+	public $routes = [
+		'POST' => [],
+		'GET' => []
+	];
 
 
     public static function load($file) {
@@ -34,7 +35,7 @@ class Router {
 	public function direct($uri, $request) {
 
 		if (array_key_exists($uri, $this->routes[$request])) {
-			return $this->callAction(
+			return $this->action(
 			  ...explode('/', $this->routes[$request][$uri])
 			);
 		}
@@ -63,12 +64,14 @@ class Router {
 	}
 
 
-	protected function callAction($controller, $action) {
+	protected function action($controller, $action) {
 
 		$controller = new $controller;
 
 		if (!method_exists($controller, $action)) {
-			throw new Exception("{$controller} does not respond to {$action} action.");
+
+			throw GeneralHandler::ControllerActionFailure($controller, $action);
+
 		}
 
 		return $controller->$action();

@@ -1,7 +1,12 @@
 #api_output_container {
+	padding-top: 2rem;
 	overflow: auto
 }
 
 #form_container {
 	padding: 32px 58px 12px 58px;
+}
+
+#example_output {
+	color: #78909c;
 }

@@ -7,9 +7,9 @@
         <div class="section"></div>
           <div class="row">
             <div class="flow-text col s8">
-              APISim is an application that allows users to enter and retrieve saved data.
+              APISim is REST-like application that allows users to enter and query stored data.
               <div class="section"></div>
-              Either submit the prefilled data or choose to enter new data then make a query to that data, or simply query the endpoint and see what values are returned.
+              Users can either submit the prefilled data, or enter new values into the fields. Users can then make a query to that data, or simply query the endpoint and see what values are returned.
             </div>
           </div>
         <div class="section"></div>
@@ -81,16 +81,16 @@
               <div class="row">
                 <div class="input-field col s3">
                   <h6>
-                    <?= Helper::$url ?>
+                    <?= PageController::$url ?>
                   </h6>
                 </div>
-                <div class="input-field valign-wrapper col s4">
-                  <input value="make=Audi" id="random_option_item" name="search" type="text">
+                <div class="input-field valign-wrapper col s5">
+                  <input value="<?= htmlspecialchars($_GET['search'] ?? 'make=Audi') ?>" id="random_option_item" name="search" type="text">
                   <label for="random_option_item">URL request</label>
                 </div>
-                <div class="input-field valign-wrapper offset-s1 col s4">
+                <div class="input-field valign-wrapper col s4">
                   <button class="btn waves-effect waves-light indigo lighten-3" type="submit">
-                    Send
+                    Query
                   </button>
                 </div>
 
@@ -99,8 +99,13 @@
 
               <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
 
-              <!-- api GET results here -->
-              <pre><?= htmlspecialchars(stripcslashes($response)); ?></pre>
+                <!-- api GET results here -->
+                <span id="example_output">
+                  <pre><?= htmlspecialchars(stripcslashes($exampleResponse ?? "")); ?></pre>
+                </span>
+                <pre><?= htmlspecialchars(stripcslashes($response ?? "")); ?></pre>
+
+              </div>
 
           </div> <!-- col endpoint -->
 

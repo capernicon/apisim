@@ -8,9 +8,39 @@ class QueryBuilder {
 	* @params $pdo
 	*
 	*/
-	public function __construct($pdo) {
+	public function __construct(PDO $pdo) {
 
 		$this->pdo = $pdo;
+
+	}
+
+	/*
+	* @params $databaseTable
+	*
+	*/
+	public function select($databaseTable) {
+
+	  	$statement = $this->pdo->prepare("select * from {$databaseTable}");
+
+		try {
+
+			$statement->execute();
+
+			$response = $statement->fetchAll(PDO::FETCH_CLASS);
+
+		}
+
+		catch (Exception $exception) {
+
+			echo $exception;
+
+		}
+
+		return Helper::httpResponse(
+			200,
+			['status' => 'example',
+			'data' => $response]
+		);
 
 	}
 
@@ -25,21 +55,14 @@ class QueryBuilder {
 
 		$keys = array_keys($parameters);
 
-		$count = count($parameters);
-
 		//add first key, value to the statement
 		$sql = 'select * from ' . $databaseTable . ' where ' . $keys[0] . ' = ' . ':' . $parameters[$keys[0]];
 
 		//more input so lets add it to the query
-		for ($iterator = 1; $iterator < $count; $iterator++) {
+		if ((count($parameters)) > MULTIPLE_INPUT) {
 
-			if ($count > MULTIPLE_INPUT) {
+			$sql .= QueryBuilder::buildUp($parameters, $keys, $sql);
 
-				$string = " and " . $keys[$iterator] . " = " . ':' . $parameters[$keys[$iterator]];
-
-				$sql .= $string;
-
-			}
 		}
 
 		try {
@@ -47,31 +70,26 @@ class QueryBuilder {
 			$statement = $this->pdo->prepare($sql);
 
 			//bind the passing in search
-			foreach ($parameters as $value) {
+			foreach ($parameters as &$value) {
 
-				$statement->bindParam(':' . $value, $value);
-
+    			$statement->bindParam($value, $value);
 			}
 
 			$statement->execute();
 
-			$query = $statement->fetchAll(PDO::FETCH_ASSOC);
+			$response = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 		}
 
 		catch (Exception $exception) {
 
-			die("An error occured trying to perform this action.");
+			echo $exception;
 
 		}
-
-		//unserialize the options array
-		$response = Helper::unserialize($query);
 
 		return Helper::httpResponse(
 			200,
 			['status' => 'ok',
-			 'count' => count($response),
 			'data' => $response]
 		);
 
@@ -86,19 +104,19 @@ class QueryBuilder {
 
 		$sql = sprintf('insert into %s (%s) values (%s)', $databaseTable, implode(',', array_keys($parameters)), ':' . implode(', :', array_keys($parameters)));
 
-		$items = Helper::serialize($parameters);
+		$input = Helper::filterOptionsParameter($parameters);
 
 		try {
 
 			$statement = $this->pdo->prepare($sql);
 
-			$statement->execute($items);
+			$statement->execute($input);
 
 		}
 
-		catch(Exception $exception) {
+		catch (Exception $exception) {
 
-			die("An error occured trying to perform this action.");
+			echo $exception;
 
 		}
 
@@ -107,6 +125,24 @@ class QueryBuilder {
 			['status' => 'created',
 			'data' => $parameters]
 		);
+
+	}
+
+
+	protected function buildUp($parameters, $keys) {
+
+		$query = '';
+		$string = '';
+
+		for ($iterator = 1; $iterator < count($parameters); $iterator++) {
+
+			$string = " and " . $keys[$iterator] . " = " . ':' . $parameters[$keys[$iterator]];
+
+			$query .= $string;
+
+		}
+
+		return $query;
 
 	}
 
