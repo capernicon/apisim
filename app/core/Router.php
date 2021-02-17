@@ -1,5 +1,9 @@
 <?php
 
+namespace App\core;
+
+use App\GeneralHandler;
+
 class Router {
 
 	public $routes = [
@@ -34,11 +38,13 @@ class Router {
 
 	public function direct($uri, $request) {
 
-		if (array_key_exists($uri, $this->routes[$request])) {
-			return $this->action(
-			  ...explode('/', $this->routes[$request][$uri])
-			);
+		if (!array_key_exists($uri, $this->routes[$request])) {
+
+			throw GeneralHandler::InvalidRoute();
+
 		}
+
+		return $this->action(...explode('/', $this->routes[$request][$uri]));
 
 	}
 
@@ -75,6 +81,7 @@ class Router {
 		}
 
 		return $controller->$action();
+
 	}
 
 }

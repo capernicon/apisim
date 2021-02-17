@@ -1,4 +1,8 @@
-  <?php include 'nav.view.php'; ?>
+<?php
+
+use App\controllers\PageController;
+
+include 'nav.view.php'; ?>
 
   <main>
       <div class="container">

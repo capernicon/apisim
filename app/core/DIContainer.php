@@ -1,5 +1,9 @@
 <?php
 
+namespace App\core;
+
+use App\exceptionHandler;
+
 //soley a dependency injection container class
 
 class DIContainer {

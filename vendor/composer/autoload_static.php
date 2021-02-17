@@ -4,29 +4,32 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit49d4143b492d8e95bfa56f2d7e8f3174
+class ComposerStaticInit6d398701b820cbf2e4e52936c9e811df
 {
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+    );
+
     public static $classMap = array (
-        'ComposerAutoloaderInit49d4143b492d8e95bfa56f2d7e8f3174' => __DIR__ . '/..' . '/composer/autoload_real.php',
-        'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
-        'Composer\\Autoload\\ComposerStaticInit49d4143b492d8e95bfa56f2d7e8f3174' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Connect' => __DIR__ . '/../..' . '/app/database/Connect.php',
-        'DIContainer' => __DIR__ . '/../..' . '/app/models/DIContainer.php',
-        'DatabaseConnection' => __DIR__ . '/../..' . '/app/exceptionHandler/DatabaseConnection.php',
-        'GeneralHandler' => __DIR__ . '/../..' . '/app/exceptionHandler/GeneralHandler.php',
-        'GetController' => __DIR__ . '/../..' . '/app/controllers/GetController.php',
-        'Helper' => __DIR__ . '/../..' . '/app/models/Helper.php',
-        'PageController' => __DIR__ . '/../..' . '/app/controllers/PageController.php',
-        'PostController' => __DIR__ . '/../..' . '/app/controllers/PostController.php',
-        'QueryBuilder' => __DIR__ . '/../..' . '/app/models/QueryBuilder.php',
-        'Router' => __DIR__ . '/../..' . '/app/core/Router.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit49d4143b492d8e95bfa56f2d7e8f3174::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6d398701b820cbf2e4e52936c9e811df::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6d398701b820cbf2e4e52936c9e811df::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6d398701b820cbf2e4e52936c9e811df::$classMap;
 
         }, null, ClassLoader::class);
     }

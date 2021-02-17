@@ -1,5 +1,9 @@
 <?php
 
+namespace App\database;
+
+use PDO;
+
 class Connect {
 
 	public static function create($databaseConfig) {
@@ -14,9 +18,9 @@ class Connect {
 
 		}
 
-		catch (DatabaseConnection $exception) {
+		catch (DatabaseConnection $e) {
 
-			echo $exception;
+			echo $e;
 
 		}
 

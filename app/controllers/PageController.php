@@ -1,5 +1,11 @@
 <?php
 
+namespace App\controllers;
+
+use App\core\DIContainer;
+
+use App\models\Helper;
+
 class PageController {
 
 	public static $url = "APISim.online/car/";

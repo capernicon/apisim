@@ -1,5 +1,7 @@
 <?php
 
+namespace App\models;
+
 class Helper {
 
 	public static function jsonOutput($response) {

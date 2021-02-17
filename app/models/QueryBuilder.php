@@ -1,5 +1,9 @@
 <?php
 
+namespace App\models;
+
+use PDO;
+
 class QueryBuilder {
 
 	protected $pdo;
