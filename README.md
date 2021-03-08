@@ -2,7 +2,8 @@ Repo for apisim.
 
 Apisim is a simulated RESTful api where users can enter data and query that data or simply make a query and see what results return.
 
-Still a work in progress.
+Live site:
+https://apisim.live
 
 ## Directory structure
 1. [app](app): Application backend
