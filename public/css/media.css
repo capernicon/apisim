@@ -1,22 +1,42 @@
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
+/* x-large */
+@media screen and (min-width: 1201px) {
+  #api_output_container {
+	min-height: 400px;
+	height: auto;
+	padding: 1rem;
+  }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
+  #form_container {
+	padding: 32px 58px 12px 58px;
+  }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-	#api_output_container {
-		min-height: 400px;
-		height: auto;
-		padding: 1rem;
-	}
+/* large */
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  #form_container {
+	padding: 32px 38px 12px 38px;
+  }
+}
+
+/* medium */
+@media screen and (min-width: 601px) and (max-width: 991px) {
+  #form_container {
+	padding: 32px 58px 12px 58px;
+  }
+}
+
+/* small */
+@media screen and (max-width: 600px) {
+  #form_container {
+    padding: 32px 58px 12px 18px;
+  }
+
+  #api_endpoint_url h6 {
+  	font-size: 14px;
+  }
+
+  button.btn {
+	font-size: 12px;
+	padding: 2.5px 10.5px;
+  }
 }

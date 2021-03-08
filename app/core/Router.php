@@ -2,7 +2,7 @@
 
 namespace App\core;
 
-use App\GeneralHandler;
+use App\exceptionHandler;
 
 class Router {
 
@@ -19,13 +19,6 @@ class Router {
     	require $file;
 
 		return $router;
-	}
-
-
-	public function define($routes) {
-
-		$this->routes = $routes;
-
 	}
 
 

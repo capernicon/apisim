@@ -2,6 +2,8 @@
 
 use App\controllers\PageController;
 
+include 'header.php';
+
 include 'nav.view.php'; ?>
 
   <main>
@@ -10,7 +12,7 @@ include 'nav.view.php'; ?>
         <div class="section"></div>
         <div class="section"></div>
           <div class="row">
-            <div class="flow-text col s8">
+            <div class="flow-text col s10 m8 l8">
               APISim is REST-like application that allows users to enter and query stored data.
               <div class="section"></div>
               Users can either submit the prefilled data, or enter new values into the fields. Users can then make a query to that data, or simply query the endpoint and see what values are returned.
@@ -19,9 +21,9 @@ include 'nav.view.php'; ?>
         <div class="section"></div>
 
         <!-- login form -->
-        <div class="row center-align">
+        <div class="row">
 
-          <div class="col s4">
+          <div class="col s12 m10 l4 offset-s2 offset-m1">
             <div class="section"></div>
             <div id="form_container" class="z-depth-1 grey lighten-4 row">
 
@@ -64,7 +66,7 @@ include 'nav.view.php'; ?>
                   </div>
                 </div>
 
-                <button type="submit" class="col s12 btn btn-large waves-effect waves-light indigo lighten-3">
+                <button type="submit" class="btn btn-large waves-effect waves-light indigo lighten-3 col s12 m8 offset-s1 offset-m2">
                   Submit
                 </button>
 
@@ -75,24 +77,24 @@ include 'nav.view.php'; ?>
               </form>
 
             </div>
-          </div> <!-- col db -->
+          </div> <!-- col form left -->
 
           <!-- endpoint -->
-          <div class="col s7 offset-s1">
+          <div class="col s12 m10 l7 offset-s2 offset-m1 offset-l1">
             <div class="section"></div>
 
             <form class="col s12" method="GET" action="/car">
               <div class="row">
-                <div class="input-field col s3">
+                <div id="api_endpoint_url" class="input-field col s4 m4 l3 xl3">
                   <h6>
                     <?= PageController::$url ?>
                   </h6>
                 </div>
-                <div class="input-field valign-wrapper col s5">
-                  <input value="<?= htmlspecialchars($_GET['search'] ?? 'make=Audi') ?>" id="random_option_item" name="search" type="text">
+                <div class="input-field valign-wrapper col s4 m5 l4 xl5 offset-s1 offset-l2">
+                  <input id="random_option_item" value="<?= htmlspecialchars($_GET['search'] ?? 'make=Audi') ?>" name="search" type="text">
                   <label for="random_option_item">URL request</label>
                 </div>
-                <div class="input-field valign-wrapper col s4">
+                <div class="input-field valign-wrapper col s3 m3 l3">
                   <button class="btn waves-effect waves-light indigo lighten-3" type="submit">
                     Query
                   </button>
@@ -119,9 +121,8 @@ include 'nav.view.php'; ?>
       <div class="section"></div>
       <div class="section"></div>
       <div class="section"></div>
+
     </main>
 
-    <script src="js/materialize.js"></script>
-    <script src="js/scripts.js"></script>
   </body>
   </html>
