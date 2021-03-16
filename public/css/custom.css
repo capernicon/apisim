@@ -1,8 +1,5 @@
-#api_output_container {
-	padding: 2rem;
-	overflow: auto
-}
-
-#example_output {
+.api_output_box {
+	padding: 1rem;
+	overflow: auto;
 	color: #78909c;
 }

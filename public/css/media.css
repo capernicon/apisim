@@ -1,27 +1,26 @@
 /* x-large */
 @media screen and (min-width: 1201px) {
-  #api_output_container {
-	min-height: 400px;
-	height: auto;
-	padding: 1rem;
+  .api_output_box {
+  	min-height: 350px;
+  	height: auto;
   }
 
   #form_container {
-	padding: 32px 58px 12px 58px;
+	  padding: 32px 58px 12px 58px;
   }
 }
 
 /* large */
 @media screen and (min-width: 992px) and (max-width: 1200px) {
   #form_container {
-	padding: 32px 38px 12px 38px;
+	  padding: 32px 38px 12px 38px;
   }
 }
 
 /* medium */
 @media screen and (min-width: 601px) and (max-width: 991px) {
   #form_container {
-	padding: 32px 58px 12px 58px;
+	  padding: 32px 58px 12px 58px;
   }
 }
 
@@ -31,12 +30,20 @@
     padding: 32px 58px 12px 18px;
   }
 
+  .api_output_box {
+    padding: 32px 58px 12px 18px;
+  }
+
   #api_endpoint_url h6 {
   	font-size: 14px;
   }
 
+  .api_output {
+    font-size: 0.8rem;
+  }
+
   button.btn {
-	font-size: 12px;
-	padding: 2.5px 10.5px;
+  	font-size: 12px;
+  	padding: 2.5px 10.5px;
   }
 }

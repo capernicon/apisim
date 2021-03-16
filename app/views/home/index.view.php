@@ -12,7 +12,7 @@ include 'nav.view.php'; ?>
         <div class="section"></div>
         <div class="section"></div>
           <div class="row">
-            <div class="flow-text col s10 m8 l8">
+            <div class="flow-text col s12 m8 l8 offset-s3">
               APISim is REST-like application that allows users to enter and query stored data.
               <div class="section"></div>
               Users can either submit the prefilled data, or enter new values into the fields. Users can then make a query to that data, or simply query the endpoint and see what values are returned.
@@ -23,7 +23,7 @@ include 'nav.view.php'; ?>
         <!-- login form -->
         <div class="row">
 
-          <div class="col s12 m10 l4 offset-s2 offset-m1">
+          <div class="col s12 m10 l4 offset-s3 offset-m1">
             <div class="section"></div>
             <div id="form_container" class="z-depth-1 grey lighten-4 row">
 
@@ -80,7 +80,7 @@ include 'nav.view.php'; ?>
           </div> <!-- col form left -->
 
           <!-- endpoint -->
-          <div class="col s12 m10 l7 offset-s2 offset-m1 offset-l1">
+          <div class="api_output_container col s12 m10 l7 offset-s3 offset-m1 offset-l1">
             <div class="section"></div>
 
             <form class="col s12" method="GET" action="/car">
@@ -103,15 +103,17 @@ include 'nav.view.php'; ?>
               </div>
             </form>
 
-              <div id="api_output_container" class="left-align z-depth-1 grey lighten-4 row">
+            <div class="api_output_box left-align z-depth-1 grey lighten-4 row valign-wrapper col s12">
 
-                <!-- api GET results here -->
-                <span id="example_output">
-                  <pre><?= htmlspecialchars(stripcslashes($exampleResponse ?? "")); ?></pre>
-                </span>
+              <!-- api GET results here -->
+              <span>
+                <pre><?= htmlspecialchars(stripcslashes($exampleResponse ?? "")); ?></pre>
+              </span>
+              <span>
                 <pre><?= htmlspecialchars(stripcslashes($response ?? "")); ?></pre>
+              </span>
 
-              </div>
+            </div>
 
           </div> <!-- col endpoint -->
 
